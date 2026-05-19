@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danièle DASSI — Account Executive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off: #f8f7f5;
+  --off2: #f0ede8;
+  --black: #0e0d0c;
+  --dark: #1c1a18;
+  --mid: #6b6560;
+  --soft: #a09890;
+  --border: #e8e4de;
+  --border2: #d4cfc8;
+  --gold: #b8944a;
+  --gold-l: #f5edd8;
+  --green: #1a6645;
+  --green-l: #e6f5ee;
+  --blue: #1a3d6b;
+  --blue-l: #e6eef8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 64px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--black); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 20px; background: var(--black); color: var(--white);
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 500;
+  text-decoration: none; border-radius: 100px; transition: all 0.2s;
+}
+.nav-cta:hover { transform: translateY(-1px); }
+/* HERO */
+.hero {
+  min-height: 100vh; padding: 120px 56px 80px;
+  display: grid; grid-template-columns: 1fr 440px; gap: 80px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero-bg-panel {
+  position: absolute; top: 0; right: 0; width: 45%; height: 100%;
+  background: var(--off); z-index: 0;
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-right { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 8px; background: var(--green-l); border-radius: 100px;
+  font-size: 12px; font-weight: 500; color: var(--green); margin-bottom: 32px;
+  opacity: 0; animation: slideIn 0.6s 0.1s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.badge-dot {
+  width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero-name {
+  font-size: clamp(52px, 6.5vw, 92px); font-weight: 800; line-height: 0.95;
+  letter-spacing: -0.03em; margin-bottom: 28px;
+  opacity: 0; animation: slideIn 0.7s 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.hero-name em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-weight: 400; color: var(--mid);
+}
+.hero-sub {
+  font-size: 17px; color: var(--mid); line-height: 1.7; max-width: 480px; margin-bottom: 48px;
+  opacity: 0; animation: slideIn 0.7s 0.35s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.hero-actions {
+  display: flex; align-items: center; gap: 16px;
+  opacity: 0; animation: slideIn 0.7s 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: var(--black); color: var(--white);
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 500;
+  text-decoration: none; border-radius: 100px; transition: all 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: transparent; color: var(--black);
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 400;
+  text-decoration: none; border: 1px solid var(--border2); border-radius: 100px; transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--black); }
+/* HERO STATS CARD */
+.hero-stats-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+  overflow: hidden; opacity: 0; animation: fadeIn 0.8s 0.6s forwards;
+}
+.stat-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; border-bottom: 1px solid var(--border); transition: background 0.2s;
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-row:hover { background: var(--off); }
+.stat-lbl { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--soft); text-transform: uppercase; }
+.stat-val { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+.stat-val.green { color: var(--green); }
+/* TICKER */
+.ticker-wrap {
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  overflow: hidden; padding: 14px 0; background: var(--black);
+}
+.ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
+.ticker-item {
+  white-space: nowrap; padding: 0 40px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.35); display: flex; align-items: center; gap: 12px;
+}
+.ticker-item b { color: var(--gold); font-weight: 600; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* QUOTA */
+.quota-section { background: var(--off); padding: 100px 56px; }
+.section-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--soft); margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(36px, 4vw, 52px); font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.025em; margin-bottom: 56px;
+}
+.section-title em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--mid); }
+.quota-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.quota-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+  padding: 44px; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
+}
+.quota-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+.quota-tag {
+  display: inline-block; padding: 5px 12px; background: var(--green-l);
+  color: var(--green); font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  border-radius: 100px; margin-bottom: 24px;
+}
+.quota-num {
+  font-size: 88px; font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+  color: var(--black); margin-bottom: 8px;
+}
+.quota-num sup { font-size: 36px; color: var(--green); font-weight: 600; vertical-align: super; }
+.quota-period { font-size: 13px; font-weight: 500; color: var(--soft); margin-bottom: 24px; }
+.quota-bar-track {
+  height: 3px; background: var(--border); border-radius: 100px; margin-bottom: 16px; overflow: hidden;
+}
+.quota-bar-fill {
+  height: 100%; background: var(--green); border-radius: 100px;
+  width: 0; transition: width 1.6s cubic-bezier(0.22,1,0.36,1);
+}
+.quota-ctx { font-size: 14px; color: var(--mid); line-height: 1.65; }
+.quota-wm {
+  position: absolute; right: -20px; bottom: -30px;
+  font-size: 140px; font-weight: 800; color: rgba(0,0,0,0.025);
+  letter-spacing: -8px; pointer-events: none; line-height: 1;
+}
+.metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.metric-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  padding: 28px; transition: transform 0.2s;
+}
+.metric-card:hover { transform: translateY(-3px); }
+.metric-num { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+.metric-suf { font-size: 22px; color: var(--gold); }
+.metric-lbl { font-size: 13px; color: var(--mid); line-height: 1.5; }
+/* EXPERIENCE */
+.exp-section { padding: 100px 56px; }
+.exp-list { display: flex; flex-direction: column; gap: 16px; }
+.exp-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+  overflow: hidden; display: grid; grid-template-columns: 240px 1fr;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.exp-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
+.exp-left-p {
+  padding: 36px 28px; background: var(--off); border-right: 1px solid var(--border);
+}
+.exp-initials {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--white); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--black); margin-bottom: 16px;
+}
+.exp-co { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.exp-dates { font-size: 12px; color: var(--soft); font-weight: 500; margin-bottom: 8px; }
+.exp-loc { font-size: 12px; color: var(--soft); }
+.exp-right-p { padding: 36px 40px; }
+.exp-highlight {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
+  background: var(--green-l); border-radius: 8px; font-size: 13px; font-weight: 600;
+  color: var(--green); margin-bottom: 16px;
+}
+.exp-role { font-size: 18px; font-weight: 600; line-height: 1.3; margin-bottom: 14px; }
+.exp-body { font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 20px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  padding: 5px 12px; background: var(--off2); color: var(--mid);
+  font-size: 12px; font-weight: 500; border-radius: 100px; border: 1px solid var(--border);
+}
+/* SECTORS */
+.sectors-section { background: var(--off); padding: 100px 56px; }
+.sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sector-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+  padding: 32px; transition: all 0.25s;
+}
+.sector-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.06); border-color: var(--border2); }
+.s-ico {
+  width: 46px; height: 46px; border-radius: 13px; display: flex;
+  align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px;
+}
+.ico-a { background: var(--gold-l); }
+.ico-b { background: var(--blue-l); }
+.ico-c { background: var(--green-l); }
+.s-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.s-desc { font-size: 14px; color: var(--mid); line-height: 1.65; }
+/* PIPELINE */
+.pipeline-section { padding: 100px 56px; }
+.pipe-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-bottom: 52px; }
+.pipe-steps::before {
+  content: ''; position: absolute; top: 23px; left: 10%; right: 10%;
+  height: 1px; background: var(--border); z-index: 0;
+}
+.pipe-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 10px; position: relative; z-index: 1; }
+.pipe-num {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--white);
+  border: 1.5px solid var(--border2); display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; margin-bottom: 18px; transition: all 0.2s;
+}
+.pipe-step:hover .pipe-num { background: var(--black); color: var(--white); border-color: var(--black); }
+.pipe-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.pipe-desc { font-size: 12px; color: var(--mid); line-height: 1.6; }
+.tools-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-chip {
+  padding: 8px 18px; background: var(--off); border: 1px solid var(--border);
+  border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--dark); transition: all 0.2s;
+}
+.tool-chip:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+/* AI */
+.ai-section { background: var(--black); color: var(--white); padding: 100px 56px; }
+.ai-section .section-eyebrow { color: rgba(255,255,255,0.35); }
+.ai-section .section-title { color: var(--white); }
+.ai-section .section-title em { color: rgba(255,255,255,0.3); }
+.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ai-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 20px; padding: 44px; transition: background 0.25s;
+}
+.ai-card:hover { background: rgba(255,255,255,0.07); }
+.ai-badge {
+  display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.07);
+  border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.5); margin-bottom: 20px;
+}
+.ai-title { font-size: 22px; font-weight: 700; margin-bottom: 14px; line-height: 1.25; }
+.ai-body { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+/* SKILLS */
+.skills-section { background: var(--off); padding: 100px 56px; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill-col {
+  background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 32px;
+}
+.skill-col-h {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--soft); padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 16px;
+}
+.skill-row {
+  display: flex; align-items: center; gap: 10px; padding: 9px 0;
+  border-bottom: 1px solid var(--border); font-size: 14px; color: var(--dark);
+}
+.skill-row:last-child { border-bottom: none; }
+.s-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+/* CONTACT */
+.contact-section { background: var(--white); text-align: center; padding: 120px 56px; }
+.contact-badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px;
+  background: var(--off); border: 1px solid var(--border); border-radius: 100px;
+  font-size: 12px; font-weight: 500; color: var(--mid); margin-bottom: 32px;
+}
+.contact-title {
+  font-size: clamp(44px, 5.5vw, 72px); font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 18px;
+}
+.contact-title em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--mid); }
+.contact-sub { font-size: 17px; color: var(--mid); margin-bottom: 48px; line-height: 1.6; }
+.contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+footer {
+  border-top: 1px solid var(--border); padding: 24px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--soft);
+}
+/* ANIMATIONS */
+@keyframes slideIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  nav { padding: 0 32px; }
+  .hero { grid-template-columns: 1fr; padding: 100px 32px 64px; gap: 48px; }
+  .hero-bg-panel { display: none; }
+  .quota-section, .exp-section, .sectors-section, .pipeline-section, .ai-section, .skills-section, .contact-section { padding: 80px 32px; }
+  .quota-grid { grid-template-columns: 1fr; }
+  .metrics-row { grid-template-columns: 1fr 1fr; }
+  .exp-card { grid-template-columns: 1fr; }
+  .exp-left-p { border-right: none; border-bottom: 1px solid var(--border); }
+  .sectors-grid { grid-template-columns: 1fr 1fr; }
+  .pipe-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .pipe-steps::before { display: none; }
+  .ai-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 80px 20px 56px; }
+  .quota-section, .exp-section, .sectors-section, .pipeline-section, .ai-section, .skills-section, .contact-section { padding: 64px 20px; }
+  .metrics-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .pipe-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Danièle DASSI</div>
+  <ul class="nav-links">
+    <li><a href="#quota">Performances</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact me →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-panel"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><div class="badge-dot"></div>Available · Paris & Remote</div>
+    <h1 class="hero-name">Danièle<br><em>DASSI</em></h1>
+    <p class="hero-sub">B2B Account Executive · Enterprise pipeline specialist, CAC 40 strategic account hunting and AI-powered prospecting automation across the SEMEA region.</p>
+    <div class="hero-actions">
+      <a href="https://www.linkedin.com/in/dassi-dani%C3%A8le-316b18208/" target="_blank" class="btn-primary">LinkedIn →</a>
+      <a href="#quota" class="btn-ghost">See my performance</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats-card">
+      <div class="stat-row"><div class="stat-lbl">Quota Q4 FY25</div><div class="stat-val green">129%</div></div>
+      <div class="stat-row"><div class="stat-lbl">Quota Q1 FY26</div><div class="stat-val green">120%</div></div>
+      <div class="stat-row"><div class="stat-lbl">Qualified leads generated</div><div class="stat-val">2 000+</div></div>
+      <div class="stat-row"><div class="stat-lbl">Region covered</div><div class="stat-val">SEMEA</div></div>
+      <div class="stat-row"><div class="stat-lbl">Strategic accounts</div><div class="stat-val">CAC 40</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item">Pipeline Generation ·</div>
+    <div class="ticker-item"><b>129%</b> Q4 FY25 ·</div>
+    <div class="ticker-item">SEMEA Region ·</div>
+    <div class="ticker-item">SAP Automation ·</div>
+    <div class="ticker-item"><b>120%</b> Q1 FY26 ·</div>
+    <div class="ticker-item">CAC 40 Accounts ·</div>
+    <div class="ticker-item">AI Agents Builder ·</div>
+    <div class="ticker-item">Data Quality · Data Integration ·</div>
+    <div class="ticker-item">Microsoft Certified ·</div>
+    <div class="ticker-item">Social Selling · Outbound ·</div>
+    <div class="ticker-item">Pipeline Generation ·</div>
+    <div class="ticker-item"><b>129%</b> Q4 FY25 ·</div>
+    <div class="ticker-item">SEMEA Region ·</div>
+    <div class="ticker-item">SAP Automation ·</div>
+    <div class="ticker-item"><b>120%</b> Q1 FY26 ·</div>
+    <div class="ticker-item">CAC 40 Accounts ·</div>
+    <div class="ticker-item">AI Agents Builder ·</div>
+    <div class="ticker-item">Data Quality · Data Integration ·</div>
+    <div class="ticker-item">Microsoft Certified ·</div>
+    <div class="ticker-item">Social Selling · Outbound ·</div>
+  </div>
+</div>
+
+<!-- QUOTA -->
+<section id="quota" class="quota-section">
+  <p class="section-eyebrow">Quota Attainment</p>
+  <h2 class="section-title">Proven <em>results.</em></h2>
+  <div class="quota-grid">
+    <div class="quota-card reveal">
+      <div class="quota-tag">✓ Exceeded</div>
+      <div class="quota-num">129<sup>%</sup></div>
+      <div class="quota-period">Q4 FY2025 · Precisely · SEMEA</div>
+      <div class="quota-bar-track"><div class="quota-bar-fill" data-w="100"></div></div>
+      <div class="quota-ctx">SEMEA pipeline — Data Quality, Data Integration & BI. Enterprise & Strategic accounts including CAC 40 groups.</div>
+      <div class="quota-wm">Q4</div>
+    </div>
+    <div class="quota-card reveal d1">
+      <div class="quota-tag">✓ Exceeded</div>
+      <div class="quota-num">120<sup>%</sup></div>
+      <div class="quota-period">Q1 FY2026 · Precisely · SEMEA</div>
+      <div class="quota-bar-track"><div class="quota-bar-fill" data-w="93"></div></div>
+      <div class="quota-ctx">Two consecutive quarters above quota — sustained performance, not a fluke. Multi-touch approach: outbound, events, social selling.</div>
+      <div class="quota-wm">Q1</div>
+    </div>
+  </div>
+  <div class="metrics-row">
+    <div class="metric-card reveal">
+      <div class="metric-num">2<span class="metric-suf">K+</span></div>
+      <div class="metric-lbl">Strategic qualified leads</div>
+    </div>
+    <div class="metric-card reveal d1">
+      <div class="metric-num">8</div>
+      <div class="metric-lbl">Microsoft events managed</div>
+    </div>
+    <div class="metric-card reveal d2">
+      <div class="metric-num">350<span class="metric-suf">+</span></div>
+      <div class="metric-lbl">Security Summit attendees</div>
+    </div>
+    <div class="metric-card reveal d3">
+      <div class="metric-num">5<span class="metric-suf">K+</span></div>
+      <div class="metric-lbl">LinkedIn followers</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="exp" class="exp-section">
+  <p class="section-eyebrow">Experience</p>
+  <h2 class="section-title">Sales & <em>Growth Journey.</em></h2>
+  <div class="exp-list">
+    <div class="exp-card reveal">
+      <div class="exp-left-p">
+        <div class="exp-initials">PRC</div>
+        <div class="exp-co">Precisely</div>
+        <div class="exp-dates">Oct. 2025 → Present</div>
+        <div class="exp-loc">Paris · Hybrid · Full-time</div>
+      </div>
+      <div class="exp-right-p">
+        <div class="exp-highlight">🏆 129% Q4 · 120% Q1</div>
+        <div class="exp-role">Business Development Representative — SEMEA</div>
+        <p class="exp-body">Responsible for pipeline generation across the SEMEA region, covering Data Quality, Data Integration and Business Intelligence solutions. Hunting and developing Enterprise & Strategic accounts, including CAC 40 groups. Deployed two AI agents (Claude Anthropic + Copilot) to automate prospecting and client qualification.Achieved 129% of quota in Q4FY25</p>
+        <div class="tags">
+          <span class="tag">Pipeline Generation</span><span class="tag">SEMEA</span><span class="tag">Enterprise Sales</span><span class="tag">CAC 40</span><span class="tag">Data Quality</span><span class="tag">SAP Automation</span><span class="tag">AI Agents</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-left-p">
+        <div class="exp-initials">MS</div>
+        <div class="exp-co">Microsoft</div>
+        <div class="exp-dates">Oct. 2024 → Oct. 2025</div>
+        <div class="exp-loc">Issy-les-Moulineaux · Full-time</div>
+      </div>
+      <div class="exp-right-p">
+        <div class="exp-highlight">⚡ 2,000+ qualified leads</div>
+        <div class="exp-role">Business Marketing Manager — Microsoft Cybersecurity</div>
+        <p class="exp-body">Led 4 major AI, Cloud & Security events generating 2,000+ qualified strategic leads, including 350+ attendees at the Microsoft Security Summit. Produced the "Minute Cyber" web series for awareness and top-of-funnel. Identified growth opportunities in collaboration with the Business Group.</p>
+        <div class="tags">
+          <span class="tag">Lead Generation</span><span class="tag">Event Marketing</span><span class="tag">Cybersecurity</span><span class="tag">Content Strategy</span><span class="tag">Growth</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-left-p">
+        <div class="exp-initials">SG</div>
+        <div class="exp-co">Société Générale</div>
+        <div class="exp-dates">Oct. 2023 → Sept. 2024</div>
+        <div class="exp-loc">Puteaux · Apprenticeship</div>
+      </div>
+      <div class="exp-right-p">
+        <div class="exp-role">Support, Digital & Data Project Manager</div>
+        <p class="exp-body">Digital project management in a banking environment — internal WebApp, event KPI analysis. International collaboration with a team in Bucharest (data cleaning, preprocessing, restructuring). Contributed to visuals for Société Générale's 160th anniversary.</p>
+        <div class="tags">
+          <span class="tag">Project Management</span><span class="tag">Data Analysis</span><span class="tag">Power BI</span><span class="tag">Finance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors-section">
+  <p class="section-eyebrow">Sectors</p>
+  <h2 class="section-title">Markets <em>mastered.</em></h2>
+  <div class="sectors-grid">
+    <div class="sector-card reveal"><div class="s-ico ico-a">⚙️</div><div class="s-name">ERP & SAP</div><p class="s-desc">Critical ERP process automation — SAP S/4HANA, migration, integration without heavy development.</p></div>
+    <div class="sector-card reveal d1"><div class="s-ico ico-b">🔐</div><div class="s-name">Cybersecurity</div><p class="s-desc">Microsoft Security solutions — Defender, cloud compliance, governance and enterprise awareness.</p></div>
+    <div class="sector-card reveal d2"><div class="s-ico ico-c">📊</div><div class="s-name">Data & IA</div><p class="s-desc">Data Quality, Data Integration, BI — reliable data foundations for agentic AI initiatives.</p></div>
+    <div class="sector-card reveal d3"><div class="s-ico ico-a">🏦</div><div class="s-name">Finance & Banking</div><p class="s-desc">Hands-on experience in banking (SG) — compliance, data security, digital transformation.</p></div>
+    <div class="sector-card reveal d1"><div class="s-ico ico-b">🏢</div><div class="s-name">Enterprise Accounts</div><p class="s-desc">CAC 40 & Enterprise accounts — long cycles, multi-stakeholders, consultative B2B selling.</p></div>
+    <div class="sector-card reveal d2"><div class="s-ico ico-c">🌍</div><div class="s-name">SEMEA</div><p class="s-desc">South Europe, Middle East & Africa — regional prospecting, bilingual FR/EN (TOEIC 870).</p></div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline" class="pipeline-section">
+  <p class="section-eyebrow">Pipeline Generation</p>
+  <h2 class="section-title">Method <em>& tools.</em></h2>
+  <div class="pipe-steps">
+    <div class="pipe-step reveal"><div class="pipe-num">01</div><div class="pipe-title">ICP Targeting</div><p class="pipe-desc">Identifying ideal profiles — company size, sector, tech stack, buying signals.</p></div>
+    <div class="pipe-step reveal d1"><div class="pipe-num">02</div><div class="pipe-title">Prospecting</div><p class="pipe-desc">6sense, wiza, zoominfo, linkedIn Sales Nav, outreach, salesforce, LinkedIn agent (Claude + Cowork) for research and outreach personalization at scale.</p></div>
+    <div class="pipe-step reveal d2"><div class="pipe-num">03</div><div class="pipe-title">Qualification</div><p class="pipe-desc">Personal research + agents to map pain points to solutions — accelerated discovery.</p></div>
+    <div class="pipe-step reveal d3"><div class="pipe-num">04</div><div class="pipe-title">Engagement</div><p class="pipe-desc">Multi-touch: LinkedIn, email, calls, events, social selling. 5,900+ followers.</p></div>
+    <div class="pipe-step reveal d4"><div class="pipe-num">05</div><div class="pipe-title">Pipeline & Closing</div><p class="pipe-desc">Rigorous CRM tracking, nurturing, qualified handoff to AEs for closing.</p></div>
+  </div>
+  <div class="tools-row">
+    <div class="tool-chip">LinkedIn Sales Navigator</div>
+    <div class="tool-chip">Claude (Anthropic)</div>
+    <div class="tool-chip">Microsoft Copilot</div>
+    <div class="tool-chip">CRM</div>
+    <div class="tool-chip">Power BI</div>
+    <div class="tool-chip">Outbound Email</div>
+    <div class="tool-chip">Social Selling</div>
+    <div class="tool-chip">Event Marketing</div>
+  </div>
+</section>
+
+<!-- AI -->
+<section class="ai-section">
+  <p class="section-eyebrow">Innovation · AI</p>
+  <h2 class="section-title">Sales <em>powered by AI.</em></h2>
+  <div class="ai-grid">
+    <div class="ai-card reveal">
+      <div class="ai-badge">Agent 01 · Prospecting</div>
+      <div class="ai-title">LinkedIn Prospecting Agent</div>
+      <p class="ai-body">Built and deployed an agent combining Claude (Anthropic) and Claude Cowork. Automates prospect research, qualifies profiles against ICP and personalizes outreach messages at scale — drastically reducing manual prospecting time while maintaining high personalization.</p>
+    </div>
+    <div class="ai-card reveal d1">
+      <div class="ai-badge">Agent 02 · Discovery</div>
+      <div class="ai-title">Copilot Agent — Business Use Cases</div>
+      <p class="ai-body">Deployed a Copilot agent to assist client discovery and qualification, automatically mapping identified pain points to Precisely's solutions. Accelerates call preparation and improves conversation quality from the very first touchpoint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <p class="section-eyebrow">Skills & Education</p>
+  <h2 class="section-title">What <em>I bring.</em></h2>
+  <div class="skills-grid">
+    <div class="skill-col reveal">
+      <div class="skill-col-h">Sales & Growth</div>
+      <div class="skill-row"><div class="s-dot"></div>Pipeline Generation — SEMEA</div>
+      <div class="skill-row"><div class="s-dot"></div>Outbound & Social Selling</div>
+      <div class="skill-row"><div class="s-dot"></div>Account-Based Marketing</div>
+      <div class="skill-row"><div class="s-dot"></div>Lead Qualification</div>
+      <div class="skill-row"><div class="s-dot"></div>CRM Management</div>
+      <div class="skill-row"><div class="s-dot"></div>Event-led Growth</div>
+    </div>
+    <div class="skill-col reveal d1">
+      <div class="skill-col-h">Tech & Data</div>
+      <div class="skill-row"><div class="s-dot"></div>Microsoft Azure (certifié AI + Data)</div>
+      <div class="skill-row"><div class="s-dot"></div>Power BI & Data Analysis</div>
+      <div class="skill-row"><div class="s-dot"></div>AI Agents (Claude, Copilot)</div>
+      <div class="skill-row"><div class="s-dot"></div>SAP & ERP Automation</div>
+      <div class="skill-row"><div class="s-dot"></div>Marketing Automation</div>
+      <div class="skill-row"><div class="s-dot"></div>Adobe Suite & WordPress</div>
+    </div>
+    <div class="skill-col reveal d2">
+      <div class="skill-col-h">Education & Languages</div>
+      <div class="skill-row"><div class="s-dot"></div>M2 EFREI Paris (2025)</div>
+      <div class="skill-row"><div class="s-dot"></div>Sales, Marketing Digital & Communication</div>
+      <div class="skill-row"><div class="s-dot"></div>French — Native bilingual</div>
+      <div class="skill-row"><div class="s-dot"></div>English — TOEIC 870</div>
+      <div class="skill-row"><div class="s-dot"></div>Azure AI Fundamentals (2025)</div>
+      <div class="skill-row"><div class="s-dot"></div>Azure Data Fundamentals (2025)</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-badge"><div class="badge-dot" style="background:var(--green)"></div>Available · Paris & Remote</div>
+  <h2 class="contact-title">Let's close<br><em>something big.</em></h2>
+  <p class="contact-sub">Account Executive · B2B Enterprise · SaaS / Data / Tech</p>
+  <div class="contact-btns">
+    <a href="https://www.linkedin.com/in/dassi-dani%C3%A8le-316b18208/" target="_blank" class="btn-primary">LinkedIn →</a>
+    <a href="mailto:dassidaniele1@gmail.com" class="btn-ghost">Send an email</a>
+  </div>
+</section>
+
+<footer>
+  <span>Danièle DASSI — Account Executive</span>
+  <span>Paris, France · 2026</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => ro.observe(el));
+
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const b = e.target, w = b.getAttribute('data-w');
+      setTimeout(() => { b.style.width = w + '%'; }, 200);
+      barObs.unobserve(b);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.quota-bar-fill').forEach(b => barObs.observe(b));
+</script>
+</body>
+</html>
